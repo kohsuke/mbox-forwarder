@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="mbox-forwarder" basedir="." default="jar">
+	<target name="compile">
+		<mkdir dir="./bin"/>
+		<javac
+			srcdir="./src"
+			destdir="./bin"
+			debug="on"
+			optimize="off"
+			/>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<tstamp />
+		
+		<jar	jarfile="mbox-forwarder.jar"
+				compress="true">
+			<manifest>
+				<attribute name="Main-Class" value="Main" />
+				<attribute name="Date" value="${DSTAMP}" />
+			</manifest>
+  		<fileset dir="bin" includes="**/*.class" />
+		</jar>
+	</target>
+</project>
